@@ -1,0 +1,12 @@
+<nav class="navbar navbar-expand-sm bg-light">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item" *ngFor="let route of userRoutes">
+        <a class="nav-link"  routerLink="{{route.path}}">{{route.text}}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div>
+  <router-outlet></router-outlet>
+</div>
