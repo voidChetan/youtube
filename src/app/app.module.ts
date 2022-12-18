@@ -13,6 +13,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { AdminLayoutComponent } from './pages/admin-layout/admin-layout.component';
 import { UserLayoutComponent } from './pages/user-layout/user-layout.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
 
 @NgModule({
@@ -32,7 +33,8 @@ import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
