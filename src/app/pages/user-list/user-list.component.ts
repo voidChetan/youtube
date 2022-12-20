@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserListComponent implements OnInit {
 
+  tabs: string [] = ['Register','Family Details','Contact Details', 'Bank Details'];
+  activatedTabIndex: number = 0;
   constructor() { }
 
   ngOnInit(): void {
+  }
+  tabChange(tabIndex: number) {
+    debugger;
+    this.activatedTabIndex = tabIndex;
   }
 
 }

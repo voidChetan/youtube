@@ -15,6 +15,8 @@ import { UserLayoutComponent } from './pages/user-layout/user-layout.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
+import { VoidTableComponent } from './reusable/void-table/void-table.component';
+import { TabsComponent } from './reusable/tabs/tabs.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
     LoginComponent,
     AdminLayoutComponent,
     UserLayoutComponent,
-    HomeLayoutComponent
+    HomeLayoutComponent,
+    VoidTableComponent,
+    TabsComponent
   ],
   imports: [
     BrowserModule,
