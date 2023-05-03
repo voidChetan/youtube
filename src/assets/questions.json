@@ -1,0 +1,112 @@
+[
+  {
+    "questionId": 1,
+    "question": "Which of the following is correct about TypeScript?", 
+    "options": [
+        {
+            "answer": "Angular is based on TypeScript",
+            "isCorrect": false
+        },
+        {
+            "answer": "This is a superset of JavaScript.",
+            "isCorrect": false
+        },
+        {
+            "answer": "TypeScript is maintained by Microsoft.",
+            "isCorrect": false
+        },
+        {
+            "answer": "All of the above.",
+            "isCorrect": true
+        }
+    ]
+  },
+  {
+    "questionId": 2,
+    "question": "What does AOT stand for?", 
+    "options": [
+        {
+            "answer": "ahead-of-time compilation",
+            "isCorrect": true
+        },
+        {
+            "answer": "Angular Object Templates",
+            "isCorrect": false
+        },
+        {
+            "answer": "Both",
+            "isCorrect": false
+        },
+        {
+            "answer": "None",
+            "isCorrect": false
+        }
+    ]
+  },
+  {
+    "questionId": 3,
+    "question": "Which of the following is not a hook application life cycle?", 
+    "options": [
+        {
+            "answer": "ngOnChanges",
+            "isCorrect": false
+        },
+        {
+            "answer": "ngViewStart",
+            "isCorrect": true
+        },
+        {
+            "answer": "ngOnInit",
+            "isCorrect": false
+        },
+        {
+            "answer": "None of above",
+            "isCorrect": false
+        }
+    ]
+  },
+  {
+    "questionId": 4,
+    "question": "What is the decorator used for configuring your module class", 
+    "options": [
+        {
+            "answer": "@NgApp",
+            "isCorrect": false
+        },
+        {
+            "answer": "@NgModule",
+            "isCorrect": true
+        },
+        {
+            "answer": "Both",
+            "isCorrect": false
+        },
+        {
+            "answer": "None of above",
+            "isCorrect": false
+        }
+    ]
+  },
+  {
+    "questionId": 5,
+    "question": "Router is part of which of the following module", 
+    "options": [
+        {
+            "answer": "@angular/core",
+            "isCorrect": false
+        },
+        {
+            "answer": "@angular/router",
+            "isCorrect": true
+        },
+        {
+            "answer": "Both",
+            "isCorrect": false
+        },
+        {
+            "answer": "None of above",
+            "isCorrect": false
+        }
+    ]
+  }
+]

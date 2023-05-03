@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
 import { VoidTableComponent } from './reusable/void-table/void-table.component';
 import { TabsComponent } from './reusable/tabs/tabs.component';
+import { QuizAppComponent } from './pages/quiz-app/quiz-app.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TabsComponent } from './reusable/tabs/tabs.component';
     UserLayoutComponent,
     HomeLayoutComponent,
     VoidTableComponent,
-    TabsComponent
+    TabsComponent,
+    QuizAppComponent
   ],
   imports: [
     BrowserModule,
