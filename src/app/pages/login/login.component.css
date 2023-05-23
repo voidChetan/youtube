@@ -21,6 +21,9 @@
     position: absolute;
     border-radius: 50%;
 }
+form{
+    background: gray !important;
+}
 .shape:first-child{
     background: linear-gradient(
         #1845ad,

@@ -1,59 +1,34 @@
-<div class="start_btn"><button (click)="showWarningPopup()">Start Quiz</button></div> 
-
-<div class="info_box" [ngClass]="showWarning ? 'activeInfo':''">
-    <div class="info-title"><span>Some Rules of this Quiz</span></div>
-    <div class="info-list">
-        <div class="info">1. You will have only <span>15 seconds</span> per each question.</div>
-        <div class="info">2. Once you select your answer, it can't be undone.</div>
-        <div class="info">3. You can't select any option once time goes off.</div>
-        <div class="info">4. You can't exit from the Quiz Once Started.</div> 
+<div class="row">
+    <div class="col-6">
+        <table class="table table-bordered">
+            <tr>
+                <th> Sr No</th>
+                <th>   Department Name </th>
+            </tr>
+            <tbody>
+                <tr *ngFor="let dept of departments; let index= index">
+                    <td>{{index+1}}</td>
+                    <td>{{dept.departmentName}}</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" (click)="onEdit(dept)">Edit</button>
+                        <button class="btn btn-sm btn-danger" (click)="ondelete(dept.deptId)">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table> 
     </div>
-    <div class="buttons">
-        <button class="quit">Exit Quiz</button>
-        <button class="restart" (click)="startQuiz()">Continue</button>
-    </div>
-</div>  
-
-<div class="quiz_box" [ngClass]="isQuizStarted? 'activeQuiz':''">
-    <header>
-        <div class="title">Awesome Quiz Application</div>
-        <div class="timer">
-            <div class="time_left_txt">Time Off</div>
-            <div class="timer_sec">{{remainingTime}}</div>
+    <div class="col-4">
+        <div class="row">
+            <div class="col-12">
+                <label for="">Dept NAme</label>
+                <input type="text" class="form-control" [(ngModel)]="deptObj.DepartmentName" placeholder="Dept Name">
+            </div>
         </div>
-        <div class="time_line" style="width: 550px;"></div>
-    </header>
-    <section *ngIf="isQuizStarted">
-        <div class="que_text"><span>{{currentQuestionNo+1}}. {{questionsList[currentQuestionNo].question}} </span></div>
-        <div class="option_list">
-            <div class="option"  [ngClass]="{'disabled': isOptionSelected(questionsList[currentQuestionNo].options),
-                                            'correct':option.isSelected && option.isCorrect,
-                                            'incorrect':option.isSelected  && !option.isCorrect}" (click)="selectOption(option)" *ngFor="let option of questionsList[currentQuestionNo].options">
-                <span>{{option.answer}}</span> 
-            </div> 
+        <div class="col-12 pt-2">
+            {{deptObj.deptId| json}}
+            <button *ngIf="deptObj.DeptId == 0" class="btn btn-sm btn-primary" (click)="saveDepartment()">Save Department</button>
+            <button *ngIf="deptObj.DeptId !== 0" class="btn btn-sm btn-primary" (click)="updateDepartment()">Update</button>
         </div>
-    </section> 
-
-    <footer>
-        <div class="total_que"><span>
-                <p>{{currentQuestionNo+1}}</p> of <p>{{questionsList.length}}</p> Questions
-            </span></div>
-        <button *ngIf="currentQuestionNo+1 == questionsList.length" class="next_btn show" (click)="finish()">Finish</button>
-        <button *ngIf="currentQuestionNo+1 !== questionsList.length" class="next_btn show" (click)="nextQuestion()">Next Que</button>
-    </footer>
-</div>
-
-
-<div class="result_box" [ngClass]="isQuizEnded?'activeResult':''">
-    <div class="icon">
-        <i class="fas fa-crown"></i>
     </div>
-    <div class="complete_text">You've completed the Quiz!</div>
-    <div class="score_text">
-        <span>and congrats! 🎉, You got <p>{{correctAnswerCount}}</p> out of <p>{{questionsList.length}}</p></span>'
-    </div>
-    <div class="buttons">
-        <button class="restart">Replay Quiz</button>
-        <button class="quit" (click)="start()">Quit Quiz</button>
-    </div>
+   
 </div>

@@ -18,6 +18,7 @@ import { HomeLayoutComponent } from './pages/home-layout/home-layout.component';
 import { VoidTableComponent } from './reusable/void-table/void-table.component';
 import { TabsComponent } from './reusable/tabs/tabs.component';
 import { QuizAppComponent } from './pages/quiz-app/quiz-app.component';
+import { StepperCrudComponent } from './pages/stepper-crud.component/stepper-crud.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { QuizAppComponent } from './pages/quiz-app/quiz-app.component';
     HomeLayoutComponent,
     VoidTableComponent,
     TabsComponent,
-    QuizAppComponent
+    QuizAppComponent,
+    StepperCrudComponent
   ],
   imports: [
     BrowserModule,

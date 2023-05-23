@@ -11,83 +11,97 @@ import { UserDashboardComponent } from './pages/user-dashboard/user-dashboard.co
 import { UserLayoutComponent } from './pages/user-layout/user-layout.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { QuizAppComponent } from './pages/quiz-app/quiz-app.component';
+import { StepperCrudComponent } from './pages/stepper-crud.component/stepper-crud.component';
 
-const routes: Routes = [ 
-      {
-        path:'quizApp',
-        component:QuizAppComponent
-      },
+const routes: Routes = [
   {
-    path:'',
-    component:LoginComponent
+    path: 'quizApp',
+    component: QuizAppComponent
   },
   {
-    path:'login',
-    component:LoginComponent
+    path: 'newEmp',
+    component: EmployeeComponent
   },
   {
-    path:'',
-    component:AdminLayoutComponent,
-    children:[
+    path: 'stepperCrud',
+    component: StepperCrudComponent
+  },
+  {
+    path: 'Courses',
+    component: RolesComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'courses',
+    component: RolesComponent
+  },
+  
+  {
+    path: '',
+    component: AdminLayoutComponent,
+    children: [
       {
-        path:'admin-dash',
-        component:AdminDashboardComponent
+        path: 'admin-dash',
+        component: AdminDashboardComponent
       },
       {
-        path:'employee',
-        component:EmployeeComponent
+        path: 'employee',
+        component: EmployeeComponent
       },
       {
-        path:'roles',
-        component:RolesComponent
+        path: 'roles',
+        component: RolesComponent
       }
     ]
   },
   {
-    path:'',
-    component:UserLayoutComponent,
-    children:[
+    path: '',
+    component: UserLayoutComponent,
+    children: [
       {
-        path:'addUser',
-        component:AddUserComponent
+        path: 'addUser',
+        component: AddUserComponent
       },
       {
-        path:'user-dashboard',
-        component:UserDashboardComponent
+        path: 'user-dashboard',
+        component: UserDashboardComponent
       },
       {
-        path:'user-list',
-        component:UserListComponent
+        path: 'user-list',
+        component: UserListComponent
       }
     ]
   },
   {
-    path:'',
-    component:HomeLayoutComponent,
-    children:[
+    path: '',
+    component: HomeLayoutComponent,
+    children: [
       {
-        path:'way2addUser',
-        component:AddUserComponent
+        path: 'way2addUser',
+        component: AddUserComponent
       },
       {
-        path:'way2user-dashboard',
-        component:UserDashboardComponent
+        path: 'way2user-dashboard',
+        component: UserDashboardComponent
       },
       {
-        path:'way2user-list',
-        component:UserListComponent
+        path: 'way2user-list',
+        component: UserListComponent
       },
       {
-        path:'way2admin-dash',
-        component:AdminDashboardComponent
+        path: 'way2admin-dash',
+        component: AdminDashboardComponent
       },
       {
-        path:'way2employee',
-        component:EmployeeComponent
+        path: 'way2employee',
+        component: EmployeeComponent
       },
       {
-        path:'way2roles',
-        component:RolesComponent
+        path: 'way2roles',
+        component: RolesComponent
       }
     ]
   }

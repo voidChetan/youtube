@@ -1,1 +1,80 @@
-<p>roles works!</p>
+<div class="container-fluid">
+    <div class="row mt-3">
+        <div class='col-md-12'>
+            <div class="card">
+                <div class="card-header bg-dark">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h6 class="fw-bold text-white">Course List</h6>
+                        </div>
+                        <div class="col-md-4">
+                            <button class="btn btn-warning btn-sm float-end" (click)="onAdd()">Add</button>
+                        </div>
+                    </div>
+                  
+                </div>
+                <div class="card-body">
+                    <div class="div">
+                        {{oldObj|json}}
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>SR</th>
+                                    <th>Course Name</th>
+                                    <th>Course Duration</th>
+                                    <th>Course BasicFees</th>
+                                    <th [ngClass]="addCourse? 'd-none':'' ">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let item of courseArr;let sr = index">
+                                    <td>{{sr+1}}</td>
+                                    <td> 
+                                        <span *ngIf="item.isEdit">
+                                            <input type="text" [(ngModel)]="item.courseName">
+                                        </span>
+                                        <span *ngIf="!item.isEdit">
+                                            {{item.courseName}}
+                                        </span> 
+                                    </td>
+                                    <td> 
+                                        <span *ngIf="item.isEdit">
+                                            <input type="text" [(ngModel)]="item.courseDuration">
+                                        </span>
+                                        <span *ngIf="!item.isEdit">
+                                            {{item.courseDuration}}
+                                        </span>
+                                        
+                                    </td>
+                                    <td> 
+                                        <span *ngIf="item.isEdit">
+                                            <input type="text" [(ngModel)]="item.courseBasicFees">
+                                        </span>
+                                        <span *ngIf="!item.isEdit">
+                                            {{item.courseBasicFees}}
+                                        </span>
+                                        
+                                    </td> 
+                                    <td >
+                                        <div *ngIf="item.isEdit">
+                                            <button *ngIf="item.courseId == 0" class="btn btn-sm btn-primary" (click)="onSave(item)">Save</button>
+                                            <button *ngIf="item.courseId !== 0" class="btn btn-sm btn-primary" (click)="onUpdate(item)">Update</button>
+                                            <button class="btn btn-sm btn-primary" (click)="onCancel(item)">Cancel</button>
+                                        </div>
+                                        <div *ngIf="!item.isEdit">
+                                            <button class="btn btn-sm btn-primary" (click)="onEdit(item)">Edit</button>
+                                        </div>
+                                        
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>

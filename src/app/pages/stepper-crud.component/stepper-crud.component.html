@@ -1,0 +1,257 @@
+<div class="container-fluid">
+  <div class="row mt-3">
+    <div class="col-md-12">
+      <!-- progressbar -->
+      <ul id="progressbar">
+        <li [ngClass]="step>=1 ? 'active' : 'inactive'">Client Details</li>
+        <li [ngClass]="step>=2 ? 'active' : 'inactive'">Project Details</li>
+        <li [ngClass]="step==3 ? 'active' : 'inactive'">Tech Details</li>
+      </ul>
+      <!-- 1st Steper -->
+      <form #clientForm="ngForm" id="msform">
+        <fieldset *ngIf="step == 1">
+          <div class="row">
+            <div class="col-12">
+              <h5 style="float: right;">Client Details</h5>
+            </div>
+          </div>  
+          <div class="row">
+            <div class="col-md-3">
+              <label class="fw-bold my-2">Client Name<span class="text-danger">*</span></label>
+              <input type="text" name="name" #name="ngModel" required class="form-control" [(ngModel)]="projectObj.name"
+                placeholder="Enter" />
+              <div class="text-danger" *ngIf="name.touched || name.dirty">
+                <span *ngIf="name.errors?.['required']">This Field is required.</span>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <label class="fw-bold my-2">Industry/Sector<span class="text-danger">*</span></label>
+              <select class="form-select" [(ngModel)]="projectObj.industry" #industry="ngModel" name="industry"
+                required>
+                <option value="">Select</option>
+                <option value="IT">IT</option>
+                <option value="Chemicals">Chemicals</option>
+                <option value="Sales">Sales</option>
+                <option value="Constructions">Constructions</option>
+              </select>
+              <div class="text-danger" *ngIf="industry.touched || industry.dirty">
+                <span *ngIf="industry.errors?.['required']">This Field is required.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row ">
+            <div class="col-12 section1 mt-3 bg-white">
+              <div class="row">
+                <div class="col-6">    <h6 class="fw-bold mt-1">Business Owner Details</h6></div>
+                <div class="col-6 text-end">
+                  <i class="fa fa-plus text-white p-1 rounded" style="background: orange;cursor: pointer;"></i>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <label class="fw-bold my-2">First Name<span class="text-danger">*</span></label>
+                  <input type="text" name="fName" #fName="ngModel" required class="form-control"
+                    [(ngModel)]="projectObj.bName" placeholder="Enter" />
+                  <div class="text-danger" *ngIf="fName.touched || fName.dirty">
+                    <span *ngIf="fName.errors?.['required']">This Field is required.</span>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label class="fw-bold my-2">Last Name<span class="text-danger">*</span></label>
+                  <input type="text" name="lName" #lName="ngModel" required class="form-control"
+                    [(ngModel)]="projectObj.lName" placeholder="Enter" />
+                  <div class="text-danger" *ngIf="lName.touched || lName.dirty">
+                    <span *ngIf="lName.errors?.['required']">This Field is required.</span>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <label class="fw-bold my-2">Email<span class="text-danger">*</span></label>
+                  <input type="text" name="email" #email="ngModel" required class="form-control"
+                    [(ngModel)]="projectObj.bEmail" placeholder="Enter" />
+                  <div class="text-danger" *ngIf="email.touched || email.dirty">
+                    <span *ngIf="email.errors?.['required']">This Field is required.</span>
+                  </div>
+                </div>
+              </div>
+              <div class="row pt-2">
+                <div class="col-12">
+                  <table class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>Sr No</th> 
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngIf="businessOwners.length == 0"> 
+                        <tr>
+                          <td class="text-center" colspan="4">No Records Added Yet</td>
+                        </tr>
+                      </ng-container>
+                      <ng-container *ngIf="businessOwners.length !== 0"> 
+                        <tr *ngFor="let item of businessOwners;let index=index">
+                          <td>{{index+1}}</td>
+                          <td>{{item.bName}}</td>
+                          <td>{{item.lName}}</td>
+                          <td>{{item.bEmail}}</td>
+                        </tr>
+                      </ng-container>
+
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>  
+          </div>
+          
+          
+          <div class="row mt-3">
+            <div class="col-md-12 text-center">
+              <button name="cancel" class="action-button-cancel bg-danger me-2" value="Cancel" (click)="onCancel()"
+                *ngIf="projectObj.id == 0">Cancel</button>
+              <button  class="action-button bg-success" [disabled]="!clientForm.valid"  (click)="next()">Next</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+       <!-- 2nd Steper -->
+      <form #projectForm="ngForm" id="msform">
+        <fieldset *ngIf="step == 2">
+          <div class="row">
+            <div class="col-12">
+              <h5 style="float: right;">Project Details</h5>
+            </div>
+          </div> 
+          <div class="row">
+            <div class="col-md-3">
+              <label class="fw-bold my-2">Project Code<span class="text-danger">*</span></label>
+              <input type="text" name="pCode" #pCode="ngModel" required class="form-control"
+                [(ngModel)]="projectObj.pCode" placeholder="Enter" />
+              <div class="text-danger" *ngIf="pCode.touched || pCode.dirty">
+                <span *ngIf="pCode.errors?.['required']">This Field is required.</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-3">
+              <label class="fw-bold my-2">Project Name<span class="text-danger">*</span></label>
+              <input type="text" name="pName" #pName="ngModel" required class="form-control"
+                [(ngModel)]="projectObj.pNAme" placeholder="Enter" />
+              <div class="text-danger" *ngIf="pName.touched || pName.dirty">
+                <span *ngIf="pName.errors?.['required']">This Field is required.</span>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label class="fw-bold my-2">Project Duration<span class="text-danger">*</span></label>
+              <input type="text" name="duration" #duration="ngModel" required class="form-control"
+                [(ngModel)]="projectObj.duration" placeholder="Enter" />
+              <div class="text-danger" *ngIf="duration.touched || duration.dirty">
+                <span *ngIf="duration.errors?.['required']">This Field is required.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+              <label class="fw-bold my-2">Manager Name<span class="text-danger">*</span></label>
+              <input type="text" name="managerName" #managerName="ngModel" required class="form-control"
+                [(ngModel)]="projectObj.managerName" placeholder="Enter" />
+              <div class="text-danger" *ngIf="managerName.touched || managerName.dirty">
+                <span *ngIf="managerName.errors?.['required']">This Field is required.</span>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label class="fw-bold my-2">Scrum Master<span class="text-danger">*</span></label>
+              <select class="form-select" required [(ngModel)]="projectObj.sucrumMaster" name="sucrumMaster"
+                #sucrumMaster="ngModel">
+                <option value="">Select</option>
+                <option value="Rahul Dravid">Rahul Dravid </option>
+                <option value="Suresh Raina">Suresh Raina</option>
+              </select>
+              <div class="text-danger" *ngIf="sucrumMaster.touched || sucrumMaster.dirty">
+                <span *ngIf="sucrumMaster.errors?.['required']">This Field is required.</span>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label class="fw-bold my-2">Business Analyst<span class="text-danger">*</span></label>
+              <select class="form-select" required [(ngModel)]="projectObj.sucrumMaster" name="sucrumMaster"
+                #sucrumMaster="ngModel">
+                <option value="">Select</option>
+                <option value="Sachin Tendulkar">Sachin Tendulkar</option>
+                <option value="Rohit Sharma">Rohit Sharma</option>
+              </select>
+              <div class="text-danger" *ngIf="sucrumMaster.touched || sucrumMaster.dirty">
+                <span *ngIf="sucrumMaster.errors?.['required']">This Field is required.</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <button (click)="previous()" name="previous" class="action-button-previous bg-primary"
+                value="Previous">Previous</button>
+              <button   class="next action-button bg-success" value="Next" [disabled]="!projectForm.valid" (click)="next()">Next</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+       <!-- 3rd Steper -->
+      <form #techForm="ngForm" id="msform">
+        <fieldset *ngIf="step == 3">
+          <div class="row">
+            <div class="col-12">
+              <h5 style="float: right;">Technologies Details</h5>
+            </div>
+          </div> 
+          
+          <div class="row">
+            <div class="col-md-4">
+              <label class="fw-bold my-2">Front End <span class="text-danger">*</span></label>
+              <input type="text" name="frontEnd" #frontEnd="ngModel" required class="form-control"
+                [(ngModel)]="projectObj.frontEnd" placeholder="Enter front-End" />
+              <div class="text-danger" *ngIf="frontEnd.touched || frontEnd.dirty">
+                <span *ngIf="frontEnd.errors?.['required']">This Field is required.</span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="fw-bold my-2">Back End <span class="text-danger">*</span></label>
+              <input type="text" name="backEnd" #backEnd="ngModel" required class="form-control"
+                [(ngModel)]="projectObj.backEnd" placeholder="Enter back-End" />
+              <div class="text-danger" *ngIf="backEnd.touched || backEnd.dirty">
+                <span *ngIf="backEnd.errors?.['required']">This Field is required.</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <label class="fw-bold my-2">Hosting Platform<span class="text-danger">*</span></label>
+              <input type="text" name="testingFramework" #testingFramework="ngModel" required class="form-control"
+                [(ngModel)]="projectObj.testingFramework" placeholder="Enter Testing Framework" />
+              <div class="text-danger" *ngIf="testingFramework.touched || testingFramework.dirty">
+                <span *ngIf="testingFramework.errors?.['required']">This Field is required.</span>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label class="fw-bold my-2">Testing Framework <span class="text-danger">*</span></label>
+              <input type="text" name="hostingPlatform" #hostingPlatform="ngModel" required class="form-control"
+                [(ngModel)]="projectObj.hostingPlatform" placeholder="Enter hosting  " />
+              <div class="text-danger" *ngIf="hostingPlatform.touched || hostingPlatform.dirty">
+                <span *ngIf="hostingPlatform.errors?.['required']">This Field is required.</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <button (click)="previous()" type="button" name="previous"
+                class="previous action-button-previous bg-primary" value="Previous">Previous</button>
+              <button   class="action-button bg-success" value="Submit" [disabled]="!techForm.valid" (click)="submit()">Finish</button>
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>

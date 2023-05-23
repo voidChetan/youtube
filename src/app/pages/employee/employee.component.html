@@ -1,1 +1,55 @@
-<p>employee works!</p>
+
+<div class="row">
+    <div class="col-6">
+        <table class="table table-bordered">
+            <tr>
+                <th> Sr No</th>
+                <th>    Name </th>
+                <th>    Contact </th>
+                <th>  Email</th>
+                <th>   State   </th>
+            </tr>
+            <tbody>
+                <tr *ngFor="let emp of empList; let index= index">
+                    <td>{{index+1}}</td>
+                    <td>{{emp.empName}}</td>
+                    <td>{{emp.empContactNo}}</td>
+                    <td>{{emp.empEmailId}}</td>
+                    <td>{{emp.empState}}</td>
+                    <td>
+                        <button class="btn btn-sm btn-primary" (click)="onEdit(emp)">Edit</button>
+                        <button class="btn btn-sm btn-danger" (click)="ondelete(emp.empId)">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table> 
+    </div>
+    <div class="col-6">
+        <div class="row">
+            <div class="col-3">
+                <label for="">Name</label> 
+                <input type="text" [(ngModel)]="empObj.empName" class="form-control">
+            </div>
+            <div class="col-3">
+                <label for="">Contact No</label> 
+                <input type="text" [(ngModel)]="empObj.empContactNo" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label for="">Email Id</label> 
+                <input type="text" [(ngModel)]="empObj.empEmailId" class="form-control">
+            </div>
+            <div class="col-3">
+                <label for="">State</label> 
+                <input type="text" [(ngModel)]="empObj.empState" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <button *ngIf="empObj.empId == 0" class="btn btn-sm btn-success" (click)="onSave()">Save</button>
+                <button *ngIf="empObj.empId !== 0" class="btn btn-sm btn-secondary" (click)="onUpdate()">Update</button>
+            </div>
+            
+        </div>
+    </div>
